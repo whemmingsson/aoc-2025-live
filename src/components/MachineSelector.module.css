@@ -1,0 +1,23 @@
+
+.selector {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.label {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.select {
+    padding: 0.5rem 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #fff;
+    cursor: pointer;
+    min-width: 200px;
+}

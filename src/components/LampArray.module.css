@@ -1,0 +1,30 @@
+.lamps {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin: 1rem 0;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #444;
+
+    margin-top: 1rem;
+    text-align: center;
+
+    background-color: #1e1e1e;
+
+    th, td {
+        border: 1px solid #444;
+        padding: 0.5rem;
+    }
+
+}
+
+.highlighted {
+    background-color: #00ad26 !important;
+    font-weight: bold;
+    transform: scale(1.0);
+    transition: all 0.2s ease;
+}
