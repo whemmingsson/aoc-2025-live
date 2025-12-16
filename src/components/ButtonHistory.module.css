@@ -1,0 +1,14 @@
+
+.buttonList {
+    list-style: none;
+
+    margin-bottom: 1rem;
+
+    & li {
+       background: #ffffff3a; 
+       padding:0.5rem;
+       margin:0.5rem;
+       display: inline-block;
+    }
+
+}

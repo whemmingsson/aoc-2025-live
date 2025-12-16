@@ -4,3 +4,9 @@
   gap: 0.5rem;
   margin: 2rem 0;
 }
+
+.suggested {
+    border: 3px solid rgb(6, 167, 0);
+    background: rgb(3, 83, 0);
+    color:#fff;
+}

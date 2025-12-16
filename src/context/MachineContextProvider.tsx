@@ -1,7 +1,7 @@
 import React from "react";
 import { MachineContext } from "./MachineContext";
 import { MachineClass, parseData } from "../utils/dataUtils";
-import type { MachineStateType } from "../types/app.types";
+import type { ButtonStateType, MachineStateType } from "../types/app.types";
 
 export const MachineContextProvider = ({
   children,
@@ -17,6 +17,9 @@ export const MachineContextProvider = ({
   const initialized = React.useRef(false);
   const [useExample, setUseExample] = React.useState(true);
   const [hoveredLampIndices, setHoveredLampIndices] = React.useState<number[]>(
+    []
+  );
+  const [pressedButtons, setPressedButtons] = React.useState<ButtonStateType[]>(
     []
   );
 
@@ -52,15 +55,18 @@ export const MachineContextProvider = ({
     if (selectedMachine) {
       setSelectedMachineIndex(index);
       setMachine(selectedMachine);
+      setPressedButtons([]);
     }
   };
 
-  const handleButtonPress = (lampIndices: number[]) => {
+  const handleButtonPress = (button: ButtonStateType) => {
     if (!machine) return;
+    const lampIndices = button.lampIndices;
     const newLamps = [...machine.lamps];
     lampIndices.forEach((index) => {
       newLamps[index] = !newLamps[index];
     });
+    setPressedButtons((prev) => [...prev, button]);
     setMachine({ ...machine, lamps: newLamps });
   };
 
@@ -85,6 +91,7 @@ export const MachineContextProvider = ({
     if (!machine) return;
     const newLamps = new Array(machine.lamps.length).fill(false);
     setMachine({ ...machine, lamps: newLamps });
+    setPressedButtons([]);
   };
 
   return (
@@ -101,6 +108,9 @@ export const MachineContextProvider = ({
         resetMachine,
         hoveredLampIndices,
         setHoveredLampIndices,
+        pressedButtons,
+        isSolved:
+          machine?.lamps.every((l, i) => l == machine.targetState[i]) ?? false,
       }}
     >
       {children}
